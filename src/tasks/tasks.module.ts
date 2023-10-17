@@ -6,7 +6,7 @@ import { TaskRespository } from './task.respository';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([TaskRespository])
+    TypeOrmModule.forFeature([TaskRespository]),
   ],
   controllers: [TasksController],
   providers: [TasksService]
