@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  task_db:
+    container_name: task_db
+    image: postgres:15
+    user: root
+    environment:
+      - POSTGRES_USER=dataflow
+      - POSTGRES_PASSWORD=DataFlow2023!
+      - POSTGRES_DB=dataflow
+    restart: always
+    volumes:
+      - ./data/postgresql:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      #      - ./data/pgadmin:/var/lib/pgadmin
+      - ./data/pgadmin-backup:/home
+    ports:
+      - 5050:80
+    restart: always
+    depends_on:
+      - task_db
+volumes:
+  task_db:
