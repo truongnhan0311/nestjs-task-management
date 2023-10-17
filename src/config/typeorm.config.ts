@@ -7,6 +7,6 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
     username: 'dataflow',
     password: 'DataFlow2023!',
     database: 'dataflow',
-    entities: [__dirname + '/../**/*.entity.ts'],
+    entities: [__dirname + '/../**/*.entity.{js,ts}'],
     synchronize: true
 }
